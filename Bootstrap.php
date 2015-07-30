@@ -155,10 +155,10 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
         }
 
         $now = new Zend_Date();
-        $dateShipping = $now->addDay($config->ORDER_EST_SHIP_DATE)->toString('Y-m-d');
+        $dateShipping = $now->addDay($config->ORDER_EST_SHIP_DATE)->toString('YYYY-mm-dd');
 
         $now = new Zend_Date();
-        $dateDelivery = $now->addDay($config->ORDER_EST_DELIVERY_DATE)->toString('Y-m-d');
+        $dateDelivery = $now->addDay($config->ORDER_EST_DELIVERY_DATE)->toString('YYYY-mm-dd');
 
         $view->ARV_GTS_TRUSTED_STORE_ID = $config->TRUSTED_STORE_ID;
         $view->ARV_GTS_BADGE_POSITION = $config->BADGE_POSITION;
