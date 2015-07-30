@@ -6,7 +6,11 @@
             "email": "manz@arvatis.com"
         }
     ],
+    "type": "shopware-frontend-plugin",
     "require": {
         "composer/installers": "~1.0"
+    },
+    "extra": {
+        "installer-name": "ArvGoogleCertifiedShops"
     }
 }
