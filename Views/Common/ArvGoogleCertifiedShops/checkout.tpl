@@ -45,5 +45,3 @@
     </div>
 {/if}
 <!-- END Google Zertifizierte Händler Order -->
-
-{debug}

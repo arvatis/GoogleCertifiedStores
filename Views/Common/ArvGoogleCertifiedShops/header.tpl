@@ -10,14 +10,19 @@
         gts.push(["badge_container", "GTS_CONTAINER"]);
     {/if}
 
-    {*
-        gts.push(["google_base_offer_id", "ITEM_GOOGLE_SHOPPING_ID"]);
-        gts.push(["google_base_subaccount_id", "2904219"]);
-        gts.push(["google_base_country", "DE"]);
-        gts.push(["google_base_language", "de"]);
-    *}
+    {if !empty($sArticle) && !empty($sArticle['articleID'])}
+        gts.push(["google_base_offer_id", "{$sArticle['articleID']|escape:'javascript'}"]);
+    {elseif !empty($sArticles) && !empty($sArticles[0]['articleID'])}
+        gts.push(["google_base_offer_id", "{$sArticles[0]['articleID']|escape:'javascript'}"]);
+    {elseif !empty($sBasket.content) && !empty($sBasket.content[0]['articleID'])}
+        gts.push(["google_base_offer_id", "{$sBasket.content[0]['articleID']|escape:'javascript'}"]);
+    {/if}
 
-    (function() {
+    gts.push(["google_base_subaccount_id", "{$ARV_GTS_GOOGLE_SHOPPING_ACCOUNT_ID|escape:'javascript'}"]);
+    gts.push(["google_base_country", "{$ARV_GTS_GOOGLE_SHOPPING_COUNTRY|escape:'javascript'}"]);
+    gts.push(["google_base_language", "{$ARV_GTS_GOOGLE_GOOGLE_SHOPPING_LANGUAGE|escape:'javascript'}"]);
+
+    (function () {
         var gts = document.createElement("script");
         gts.type = "text/javascript";
         gts.async = true;

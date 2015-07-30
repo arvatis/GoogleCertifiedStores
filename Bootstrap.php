@@ -15,7 +15,7 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
      */
     public function getVersion()
     {
-        return '1.0.0';
+        return '1.0.1';
     }
 
     /**
@@ -125,6 +125,27 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
             'description' => 'Domain name associated with the order, formatted as www.mystore.com. If checkout takes place on a domain different from where your product pages are hosted, you should use the domain that hosts the product pages. The intent is for Google to know the domain where the customer added the item(s) to their cart.',
             'scope' => \Shopware\Models\Config\Element::SCOPE_SHOP
         ));
+
+        $form->setElement('text', 'GOOGLE_SHOPPING_ACCOUNT_ID', array(
+            'label' => 'Google Shopping ID',
+            'value' => null,
+            'description' => 'Account ID from Google Merchant Center. This value should match the account ID you use to submit your product data feed to Google Shopping through Google Merchant center. If you have a MCA account, use the subaccount ID associated with that product feed.',
+            'scope' => \Shopware\Models\Config\Element::SCOPE_SHOP
+        ));
+
+        $form->setElement('text', 'GOOGLE_SHOPPING_COUNTRY', array(
+            'label' => 'Google Shopping country',
+            'value' => null,
+            'description' => 'Account country from Google Shopping. This value should match the account country you use to submit your product data feed to Google Shopping. The value of the country parameter should be a two-letter ISO 3166 country code. For example, values could be “US”, “GB”, “AU”, “FR”, “DE”, “JP”.',
+            'scope' => \Shopware\Models\Config\Element::SCOPE_SHOP
+        ));
+
+        $form->setElement('text', 'GOOGLE_SHOPPING_LANGUAGE', array(
+            'label' => 'Google Shopping language',
+            'value' => null,
+            'description' => 'Account language from Google Shopping. This value should match the account language you use to submit your product data feed to Google Shopping. The value of the language parameter should be a two-letter ISO 639-1 language code. For example, values could be "en", "fr", "de", "ja".',
+            'scope' => \Shopware\Models\Config\Element::SCOPE_SHOP
+        ));
     }
 
     /**
@@ -155,10 +176,10 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
         }
 
         $now = new Zend_Date();
-        $dateShipping = $now->addDay($config->ORDER_EST_SHIP_DATE)->toString('YYYY-mm-dd');
+        $dateShipping = $now->addDay($config->ORDER_EST_SHIP_DATE)->toString('YYYY-MM-dd');
 
         $now = new Zend_Date();
-        $dateDelivery = $now->addDay($config->ORDER_EST_DELIVERY_DATE)->toString('YYYY-mm-dd');
+        $dateDelivery = $now->addDay($config->ORDER_EST_DELIVERY_DATE)->toString('YYYY-MM-dd');
 
         $view->ARV_GTS_TRUSTED_STORE_ID = $config->TRUSTED_STORE_ID;
         $view->ARV_GTS_BADGE_POSITION = $config->BADGE_POSITION;
@@ -167,6 +188,10 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
         $view->ARV_GTS_MERCHANT_ORDER_DOMAIN = $config->MERCHANT_ORDER_DOMAIN;
         $view->ARV_GTS_ORDER_EST_SHIP_DATE = $dateShipping;
         $view->ARV_GTS_ORDER_EST_DELIVERY_DATE = $dateDelivery;
+
+        $view->ARV_GTS_GOOGLE_SHOPPING_ACCOUNT_ID = $config->GOOGLE_SHOPPING_ACCOUNT_ID;
+        $view->ARV_GTS_GOOGLE_SHOPPING_COUNTRY = $config->GOOGLE_SHOPPING_COUNTRY;
+        $view->ARV_GTS_GOOGLE_GOOGLE_SHOPPING_LANGUAGE = $config->GOOGLE_SHOPPING_LANGUAGE;
     }
 
     /**
