@@ -1,0 +1,12 @@
+{
+    "name": "arvatis/googlecertifiedshops",
+    "authors": [
+        {
+            "name": "Jochen Manz",
+            "email": "manz@arvatis.com"
+        }
+    ],
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
