@@ -12,5 +12,14 @@
     },
     "extra": {
         "installer-name": "ArvGoogleCertifiedShops"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "php bin/console sw:plugin:install ArvGoogleCertifiedShops",
+            "php bin/console sw:plugin:activate ArvGoogleCertifiedShops"
+        ],
+        "post-update-cmd": [
+            "php bin/console sw:plugin:update ArvGoogleCertifiedShops"
+        ]
     }
 }

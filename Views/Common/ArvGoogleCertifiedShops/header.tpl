@@ -32,3 +32,5 @@
     })();
 </script>
 <!-- END: Google Zertifizierte Haendler -->
+
+{debug}

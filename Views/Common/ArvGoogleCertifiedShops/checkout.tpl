@@ -38,6 +38,10 @@
                     <span class="gts-i-name">{$sBasketItem.articlename|escape}</span>
                     <span class="gts-i-price">{$sBasketItem.priceNumeric|round:2}</span>
                     <span class="gts-i-quantity">{$sBasketItem.quantity|round}</span>
+                    <span class="gts-i-prodsearch-id">{$sBasketItem.articleID|escape}</span>
+                    <span class="gts-i-prodsearch-store-id">{$ARV_GTS_GOOGLE_SHOPPING_ACCOUNT_ID}</span>
+                    <span class="gts-i-prodsearch-country">{$ARV_GTS_GOOGLE_SHOPPING_COUNTRY}</span>
+                    <span class="gts-i-prodsearch-language">{$ARV_GTS_GOOGLE_GOOGLE_SHOPPING_LANGUAGE}</span>
                 </span>
             {/if}
         {/foreach}
