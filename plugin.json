@@ -1,0 +1,33 @@
+{
+    "label": {
+        "de": "Google Trusted Shops",
+        "en": "Google Trusted Shops",
+        "uk": "Google Certified Stores"
+    },
+    "copyright": "(c) by arvatis media GmbH",
+    "license": "proprietary",
+    "link": "http://www.arvatis.com",
+    "author": "arvatis media GmbH",
+
+    "currentVersion": "1.0.2",
+
+    "changelog": {
+        "de": {
+            "1.0.2": "Shopware 4 Kompatibilität hinzugefügt;",
+            "1.0.1": "Google Shopping eingebaut;",
+            "1.0.0": "Erste Implementierung für Shopware 5;"
+        },
+        "en": {
+            "1.0.2": "added Shopware 4 compatibility;",
+            "1.0.1": "Google Shopping compatibility;",
+            "1.0.0": "First implementierung for Shopware 5;"
+        }
+    },
+
+    "compatibility": {
+        "minimumVersion": "4.3.0",
+        "maximumVersion": null,
+        "blacklist": [
+        ]
+    }
+}

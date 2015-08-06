@@ -78,7 +78,7 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
         $form = $this->Form();
         /** @var \Shopware\Models\Config\Form $parent */
 
-        $range = range(0,60);
+        $range = range(0, 60);
         $estimates = [];
         foreach ($range as $number) {
             $estimates[] = [$number, '+' . $number . ' Day(s)'];
@@ -168,11 +168,18 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
             return;
         }
 
-        $view->addTemplateDir(__DIR__.'/Views/Common');
+        $view->addTemplateDir(__DIR__ . '/Views/Common');
 
         $version = Shopware()->Shop()->getTemplate()->getVersion();
         if ($version >= 3) {
-            $view->addTemplateDir(__DIR__.'/Views/Responsive');
+            $view->addTemplateDir(__DIR__ . '/Views/Responsive');
+        } else {
+            $view->addTemplateDir(__DIR__ . '/Views/Emotion');
+            $view->extendsTemplate('frontend/checkout/index_google.tpl');
+
+            if ($request->getActionName() === 'finish') {
+                $view->extendsTemplate('frontend/checkout/finish_google.tpl');
+            }
         }
 
         $now = new Zend_Date();
