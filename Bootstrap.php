@@ -15,7 +15,7 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
      */
     public function getVersion()
     {
-        return '1.0.1';
+        return '1.0.2';
     }
 
     /**
@@ -76,14 +76,15 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
     public function createForm()
     {
         $form = $this->Form();
-        /** @var \Shopware\Models\Config\Form $parent */
 
-        $range = range(0, 60);
         $estimates = [];
-        foreach ($range as $number) {
+        foreach (range(0, 60) as $number) {
             $estimates[] = [$number, '+' . $number . ' Day(s)'];
         }
 
+        /**
+         * @var \Shopware\Models\Config\Form $parent
+         */
         $parent = $this->Forms()->findOneBy(array('name' => 'Interface'));
         $form->setParent($parent);
 
