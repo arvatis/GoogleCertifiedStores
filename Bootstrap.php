@@ -80,7 +80,7 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
         $range = range(0, 60);
         $estimates = [];
         foreach ($range as $number) {
-            $estimates[] = [$number, '+' . $number . ' Day(s)'];
+            $estimates[] = array($number, '+' . $number . ' Day(s)');
         }
 
         /**
