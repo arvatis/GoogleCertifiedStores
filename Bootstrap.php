@@ -127,7 +127,7 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
         ));
 
         $form->setElement('text', 'GOOGLE_SHOPPING_ACCOUNT_ID', array(
-            'label' => 'Google Shopping ID',
+            'label' => 'Google Shopping Account ID',
             'value' => null,
             'description' => 'Account ID from Google Merchant Center. This value should match the account ID you use to submit your product data feed to Google Shopping through Google Merchant center. If you have a MCA account, use the subaccount ID associated with that product feed.',
             'scope' => \Shopware\Models\Config\Element::SCOPE_SHOP
