@@ -15,7 +15,7 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
      */
     public function getVersion()
     {
-        return '1.0.1';
+        return '1.0.2';
     }
 
     /**
