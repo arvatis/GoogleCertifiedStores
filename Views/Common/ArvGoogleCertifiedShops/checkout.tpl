@@ -20,7 +20,7 @@
         <span id="gts-o-domain">{$ARV_GTS_MERCHANT_ORDER_DOMAIN|escape}</span>
         <span id="gts-o-email">{$sUserData.additional.user.email|escape}</span>
         <span id="gts-o-country">{$ARV_GTS_COUNTRY|escape}</span>
-        <span id="gts-o-currency">{$sBasket.sCurrencyName|escape}</span>
+        <span id="gts-o-currency">{$ARV_GTS_BASKET_CURRENCY|escape}</span>
         <span id="gts-o-total">{$sAmountNumeric|round:2}</span>
         <span id="gts-o-discounts">0.0</span>
         <span id="gts-o-shipping-total">{$sShippingcosts|replace:',':'.'|round:2}</span>

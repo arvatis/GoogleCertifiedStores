@@ -198,6 +198,8 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
         $view->ARV_GTS_ORDER_EST_SHIP_DATE = $dateShipping;
         $view->ARV_GTS_ORDER_EST_DELIVERY_DATE = $dateDelivery;
 
+        $view->ARV_GTS_BASKET_CURRENCY = Shopware()->Currency()->getShortName();
+
         $view->ARV_GTS_GOOGLE_SHOPPING_ACCOUNT_ID = $config->GOOGLE_SHOPPING_ACCOUNT_ID;
         $view->ARV_GTS_GOOGLE_SHOPPING_COUNTRY = $config->GOOGLE_SHOPPING_COUNTRY;
         $view->ARV_GTS_GOOGLE_GOOGLE_SHOPPING_LANGUAGE = $config->GOOGLE_SHOPPING_LANGUAGE;

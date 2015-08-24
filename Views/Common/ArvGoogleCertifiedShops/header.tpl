@@ -11,11 +11,19 @@
     {/if}
 
     {if !empty($sArticle) && !empty($sArticle['articleID'])}
-        gts.push(["google_base_offer_id", "{$sArticle['articleID']|escape:'javascript'}"]);
-    {elseif !empty($sArticles) && !empty($sArticles[0]['articleID'])}
-        gts.push(["google_base_offer_id", "{$sArticles[0]['articleID']|escape:'javascript'}"]);
-    {elseif !empty($sBasket.content) && !empty($sBasket.content[0]['articleID'])}
-        gts.push(["google_base_offer_id", "{$sBasket.content[0]['articleID']|escape:'javascript'}"]);
+        gts.push(["google_base_offer_id", "{$sArticle.articleID|escape:'javascript'}"]);
+    {elseif !empty($sArticles)}
+        {foreach from=$sArticles item=ARV_GTS_PRODUCT name=ARV_GTS_PRODUCTS}
+            {if $smarty.foreach.ARV_GTS_PRODUCTS.first}
+                gts.push(["google_base_offer_id", "{$ARV_GTS_PRODUCT.articleID|escape:'javascript'}"]);
+            {/if}
+        {/foreach}
+    {elseif !empty($sBasket.content)}
+        {foreach from=$sBasket.content item=ARV_GTS_PRODUCT name=ARV_GTS_PRODUCTS}
+            {if $smarty.foreach.ARV_GTS_PRODUCTS.first}
+                gts.push(["google_base_offer_id", "{$ARV_GTS_PRODUCT.articleID|escape:'javascript'}"]);
+            {/if}
+        {/foreach}
     {/if}
 
     gts.push(["google_base_subaccount_id", "{$ARV_GTS_GOOGLE_SHOPPING_ACCOUNT_ID|escape:'javascript'}"]);
