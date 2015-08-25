@@ -9,13 +9,12 @@ use Shopware\Models\Category\Repository;
  */
 class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopware_Components_Plugin_Bootstrap
 {
-
     /**
      * @return string
      */
     public function getVersion()
     {
-        return '1.0.2';
+        return '1.0.3';
     }
 
     /**
