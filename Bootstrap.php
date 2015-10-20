@@ -14,7 +14,7 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
      */
     public function getVersion()
     {
-        return '1.0.3';
+        return '1.0.4';
     }
 
     /**
@@ -39,7 +39,7 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
             'source' => "Community",
             'description' => '',
             'license' => 'commercial',
-            'copyright' => 'Copyright © 2014, arvatis media GmbH',
+            'copyright' => 'Copyright © 2015, arvatis media GmbH',
             'support' => '',
             'link' => 'http://www.arvatis.com/'
         );
@@ -59,14 +59,26 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
     }
 
     /**
+     * @param string $version
+     * @return bool
+     */
+    public function update($version)
+    {
+        // Remove update zip if it exists
+        $updateFile = dirname(__FILE__) . "/ArvGoogleCertifiedShops.zip";
+        if (file_exists($updateFile)) {
+            unlink($updateFile);
+        }
+
+        return true;
+    }
+
+    /**
      * Register Events
      */
     private function subscribeEvents()
     {
-        $this->subscribeEvent(
-            'Enlight_Controller_Action_PostDispatch_Frontend',
-            'onPostDispatch'
-        );
+        $this->subscribeEvent('Enlight_Controller_Action_PostDispatch_Frontend', 'onPostDispatch');
     }
 
     /**
@@ -183,11 +195,15 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
             }
         }
 
-        $now = new Zend_Date();
-        $dateShipping = $now->addDay($config->ORDER_EST_SHIP_DATE)->toString('YYYY-MM-dd');
+        try {
+            $now = new Zend_Date();
+            $dateShipping = $now->addDay($config->ORDER_EST_SHIP_DATE)->toString('YYYY-MM-dd');
 
-        $now = new Zend_Date();
-        $dateDelivery = $now->addDay($config->ORDER_EST_DELIVERY_DATE)->toString('YYYY-MM-dd');
+            $now = new Zend_Date();
+            $dateDelivery = $now->addDay($config->ORDER_EST_DELIVERY_DATE)->toString('YYYY-MM-dd');
+        } catch (Exception $e) {
+            $dateShipping = $dateDelivery = new Zend_Date();
+        }
 
         $view->ARV_GTS_TRUSTED_STORE_ID = $config->TRUSTED_STORE_ID;
         $view->ARV_GTS_BADGE_POSITION = $config->BADGE_POSITION;
@@ -196,9 +212,7 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
         $view->ARV_GTS_MERCHANT_ORDER_DOMAIN = $config->MERCHANT_ORDER_DOMAIN;
         $view->ARV_GTS_ORDER_EST_SHIP_DATE = $dateShipping;
         $view->ARV_GTS_ORDER_EST_DELIVERY_DATE = $dateDelivery;
-
         $view->ARV_GTS_BASKET_CURRENCY = Shopware()->Currency()->getShortName();
-
         $view->ARV_GTS_GOOGLE_SHOPPING_ACCOUNT_ID = $config->GOOGLE_SHOPPING_ACCOUNT_ID;
         $view->ARV_GTS_GOOGLE_SHOPPING_COUNTRY = $config->GOOGLE_SHOPPING_COUNTRY;
         $view->ARV_GTS_GOOGLE_GOOGLE_SHOPPING_LANGUAGE = $config->GOOGLE_SHOPPING_LANGUAGE;
