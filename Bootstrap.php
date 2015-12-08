@@ -188,7 +188,7 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
             $view->addTemplateDir(__DIR__ . '/Views/Responsive');
         } else {
             $view->addTemplateDir(__DIR__ . '/Views/Emotion');
-            $view->extendsTemplate('frontend/checkout/index_google.tpl');
+            $view->extendsTemplate('frontend/index/index_google.tpl');
 
             if ($request->getActionName() === 'finish') {
                 $view->extendsTemplate('frontend/checkout/finish_google.tpl');
