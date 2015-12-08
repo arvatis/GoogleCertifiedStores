@@ -1,9 +1,5 @@
 <?php
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Shopware\Components\Theme\LessDefinition;
-use Shopware\Models\Category\Repository;
-
 /**
  * Class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap
  */
@@ -14,7 +10,7 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
      */
     public function getVersion()
     {
-        return '1.0.5';
+        return '1.0.6';
     }
 
     /**
