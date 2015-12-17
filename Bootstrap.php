@@ -178,13 +178,13 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
                         'description' => 'Der Standardwert dieser Variablen lautet BOTTOM_RIGHT. Alternativ können Sie diesen Wert auf USER_DEFINED setzen, um dem Gütesiegel eine andere, feste Position in Relation zu den anderen Inhalten auf einer bestimmten Webseite zuzuweisen.',
                     ),
                     'ORDER_EST_SHIP_DATE' => array(
-                        'label' => 'Voraussichtliche Versanddatum'
+                        'label' => 'Voraussichtliches Versanddatum'
                     ),
                     'ORDER_EST_DELIVERY_DATE' => array(
-                        'label' => 'Voraussichtliche Liefertermin'
+                        'label' => 'Voraussichtliches Liefertermin'
                     ),
                     'MERCHANT_ORDER_DOMAIN' => array(
-                        'label' => 'Domainname',
+                        'label' => 'Händler Domain',
                         'description' => 'Dies ist der Domainname zu der Bestellung im Format www.ihremusterdomain.de. Wenn Produktseiten und Seiten zum Abschluss des Kaufvorgangs auf verschiedenen Domains gehostet sind, sollten Sie die Domain verwenden, auf der sich die Produktseiten befinden. Dadurch soll Google die Domain mitgeteilt werden, auf der der Kunde Artikel zu seinem Warenkorb hinzugefügt hat.',
                     ),
                     'GOOGLE_SHOPPING_ACCOUNT_ID' => array(
