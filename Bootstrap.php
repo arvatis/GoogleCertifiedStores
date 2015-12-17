@@ -181,7 +181,7 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
                         'label' => 'Voraussichtliches Versanddatum'
                     ),
                     'ORDER_EST_DELIVERY_DATE' => array(
-                        'label' => 'Voraussichtliches Liefertermin'
+                        'label' => 'Voraussichtlicher Liefertermin'
                     ),
                     'MERCHANT_ORDER_DOMAIN' => array(
                         'label' => 'Händler Domain',
