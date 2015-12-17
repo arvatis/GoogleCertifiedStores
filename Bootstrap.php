@@ -10,7 +10,7 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
      */
     public function getVersion()
     {
-        return '1.0.6';
+        return '1.0.7';
     }
 
     /**
@@ -66,8 +66,19 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
             unlink($updateFile);
         }
 
+        if (version_compare($version, '1.0.7', '<')) {
+            try {
+                $this->createForm();
+            } catch (Exception $e) {
+                return array(
+                    'success' => false,
+                    'message' => $e->getMessage()
+                );
+            }
+        }
         return true;
     }
+
 
     /**
      * Register Events
