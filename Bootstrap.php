@@ -178,6 +178,9 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
                         'description' => 'Der Standardwert dieser Variablen lautet BOTTOM_RIGHT. Alternativ können Sie diesen Wert auf USER_DEFINED setzen, um dem Gütesiegel eine andere, feste Position in Relation zu den anderen Inhalten auf einer bestimmten Webseite zuzuweisen.',
                     ),
                     'ORDER_EST_SHIP_DATE' => array(
+                        'label' => 'Voraussichtliche Versanddatum'
+                    ),
+                    'ORDER_EST_DELIVERY_DATE' => array(
                         'label' => 'Voraussichtliche Liefertermin'
                     ),
                     'MERCHANT_ORDER_DOMAIN' => array(
