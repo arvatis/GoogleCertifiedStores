@@ -66,8 +66,19 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
             unlink($updateFile);
         }
 
+        if (version_compare($version, '1.0.7', '<')) {
+            try {
+                $this->createForm();
+            } catch (Exception $e) {
+                return array(
+                    'success' => false,
+                    'message' => $e->getMessage()
+                );
+            }
+        }
         return true;
     }
+
 
     /**
      * Register Events
@@ -155,6 +166,43 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
             'description' => 'Account language from Google Shopping. This value should match the account language you use to submit your product data feed to Google Shopping. The value of the language parameter should be a two-letter ISO 639-1 language code. For example, values could be "en", "fr", "de", "ja".',
             'scope' => \Shopware\Models\Config\Element::SCOPE_SHOP
         ));
+
+        $this->addFormTranslations(
+            array(
+                'de_DE' => array(
+                    'TRUSTED_STORE_ID' => array(
+                        'label' => 'Google Zertifizierte Händler-ID'
+                    ),
+                    'BADGE_POSITION' => array(
+                        'label' => 'Gütesiegel Position',
+                        'description' => 'Der Standardwert dieser Variablen lautet BOTTOM_RIGHT. Alternativ können Sie diesen Wert auf USER_DEFINED setzen, um dem Gütesiegel eine andere, feste Position in Relation zu den anderen Inhalten auf einer bestimmten Webseite zuzuweisen.',
+                    ),
+                    'ORDER_EST_SHIP_DATE' => array(
+                        'label' => 'Voraussichtliches Versanddatum'
+                    ),
+                    'ORDER_EST_DELIVERY_DATE' => array(
+                        'label' => 'Voraussichtlicher Liefertermin'
+                    ),
+                    'MERCHANT_ORDER_DOMAIN' => array(
+                        'label' => 'Händler Domain',
+                        'description' => 'Dies ist der Domainname zu der Bestellung im Format www.ihremusterdomain.de. Wenn Produktseiten und Seiten zum Abschluss des Kaufvorgangs auf verschiedenen Domains gehostet sind, sollten Sie die Domain verwenden, auf der sich die Produktseiten befinden. Dadurch soll Google die Domain mitgeteilt werden, auf der der Kunde Artikel zu seinem Warenkorb hinzugefügt hat.',
+                    ),
+                    'GOOGLE_SHOPPING_ACCOUNT_ID' => array(
+                        'label' => 'Google Shopping-Kundennummer',
+                        'description' => 'Kundennummer im Google Merchant Center. Dieser Wert muss mit der Kundennummer übereinstimmen, die Sie zum Senden Ihres Produktdatenfeeds an Google Shopping über das Google Merchant Center verwenden. Wenn Sie ein MCA-Konto haben, verwenden Sie die Kundennummer des Unterkontos, das mit diesem Produktfeed verknüpft ist.',
+                    ),
+                    'GOOGLE_SHOPPING_COUNTRY' => array(
+                        'label' => 'Google Shopping-Land',
+                        'description' => 'Geben Sie dieses Feld nur an, wenn Sie Feeds an Google Shopping senden. Dies ist das Land des Kontos aus Google Shopping. Dieser Wert sollte mit dem Land des Kontos übereinstimmen, das Sie verwenden, um Ihren Produktdatenfeed an Google Shopping zu senden. Der Wert des Parameters für das Land sollte ein aus zwei Buchstaben bestehender ISO 3166-Ländercode sein.',
+                    ),
+                    'GOOGLE_SHOPPING_LANGUAGE' => array(
+                        'label' => 'Google Shopping-Sprache',
+                        'description' => 'Geben Sie dieses Feld nur an, wenn Sie Feeds an Google Shopping senden. Dies ist die Sprache des Kontos aus Google Shopping. Dieser Wert sollte mit der Sprache des Kontos übereinstimmen, das Sie verwenden, um Ihren Produktdatenfeed an Google Shopping zu senden. Der Wert des Parameters für die Sprache sollte ein aus zwei Buchstaben bestehender ISO 639-1-Sprachcode sein.',
+                    )
+                )
+            )
+        );
+
     }
 
     /**
