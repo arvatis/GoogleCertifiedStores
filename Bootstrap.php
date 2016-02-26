@@ -10,7 +10,7 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
      */
     public function getVersion()
     {
-        return '1.0.6';
+        return '1.0.7';
     }
 
     /**
@@ -173,7 +173,7 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
 
         $config = $this->Config();
 
-        if (empty($config->TRUSTED_STORE_ID)) {
+        if (empty($config->get('TRUSTED_STORE_ID'))) {
             return;
         }
 
@@ -193,25 +193,25 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
 
         try {
             $now = new Zend_Date();
-            $dateShipping = $now->addDay($config->ORDER_EST_SHIP_DATE)->toString('YYYY-MM-dd');
+            $dateShipping = $now->addDay($config->get('ORDER_EST_SHIP_DATE'))->toString('YYYY-MM-dd');
 
             $now = new Zend_Date();
-            $dateDelivery = $now->addDay($config->ORDER_EST_DELIVERY_DATE)->toString('YYYY-MM-dd');
+            $dateDelivery = $now->addDay($config->get('ORDER_EST_DELIVERY_DATE'))->toString('YYYY-MM-dd');
         } catch (Exception $e) {
             $dateShipping = $dateDelivery = new Zend_Date();
         }
 
-        $view->ARV_GTS_TRUSTED_STORE_ID = $config->TRUSTED_STORE_ID;
-        $view->ARV_GTS_BADGE_POSITION = $config->BADGE_POSITION;
-        $view->ARV_GTS_LOCALE = Shopware()->Locale()->toString();
-        $view->ARV_GTS_COUNTRY = Shopware()->Locale()->getRegion();
-        $view->ARV_GTS_MERCHANT_ORDER_DOMAIN = $config->MERCHANT_ORDER_DOMAIN;
-        $view->ARV_GTS_ORDER_EST_SHIP_DATE = $dateShipping;
-        $view->ARV_GTS_ORDER_EST_DELIVERY_DATE = $dateDelivery;
-        $view->ARV_GTS_BASKET_CURRENCY = Shopware()->Currency()->getShortName();
-        $view->ARV_GTS_GOOGLE_SHOPPING_ACCOUNT_ID = $config->GOOGLE_SHOPPING_ACCOUNT_ID;
-        $view->ARV_GTS_GOOGLE_SHOPPING_COUNTRY = $config->GOOGLE_SHOPPING_COUNTRY;
-        $view->ARV_GTS_GOOGLE_GOOGLE_SHOPPING_LANGUAGE = $config->GOOGLE_SHOPPING_LANGUAGE;
+        $view->assign('ARV_GTS_TRUSTED_STORE_ID', $config->get('TRUSTED_STORE_ID'));
+        $view->assign('ARV_GTS_BADGE_POSITION', $config->get('BADGE_POSITION'));
+        $view->assign('ARV_GTS_LOCALE', Shopware()->Locale()->toString());
+        $view->assign('ARV_GTS_COUNTRY', Shopware()->Locale()->getRegion());
+        $view->assign('ARV_GTS_MERCHANT_ORDER_DOMAIN', $config->get('MERCHANT_ORDER_DOMAIN'));
+        $view->assign('ARV_GTS_ORDER_EST_SHIP_DATE', $dateShipping);
+        $view->assign('ARV_GTS_ORDER_EST_DELIVERY_DATE', $dateDelivery);
+        $view->assign('ARV_GTS_BASKET_CURRENCY', Shopware()->Currency()->getShortName());
+        $view->assign('ARV_GTS_GOOGLE_SHOPPING_ACCOUNT_ID', $config->get('GOOGLE_SHOPPING_ACCOUNT_ID'));
+        $view->assign('ARV_GTS_GOOGLE_SHOPPING_COUNTRY', $config->get('GOOGLE_SHOPPING_COUNTRY'));
+        $view->assign('ARV_GTS_GOOGLE_GOOGLE_SHOPPING_LANGUAGE', $config->get('GOOGLE_SHOPPING_LANGUAGE'));
     }
 
     /**

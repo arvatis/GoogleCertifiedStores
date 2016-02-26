@@ -8,6 +8,8 @@
 
 {block name='frontend_index_body_inline' append}
     {if $ARV_GTS_BADGE_POSITION == 'USER_DEFINED'}
-        <div id="GTS_CONTAINER"></div>
+        {block name='arv_google_certified_shops_gts_container'}
+            <div id="GTS_CONTAINER"></div>
+        {/block}
     {/if}
 {/block}

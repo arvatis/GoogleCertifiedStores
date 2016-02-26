@@ -15,6 +15,7 @@
     },
     "scripts": {
         "post-install-cmd": [
+            "php bin/console sw:plugin:refresh",
             "php bin/console sw:plugin:install ArvGoogleCertifiedShops",
             "php bin/console sw:plugin:activate ArvGoogleCertifiedShops"
         ],

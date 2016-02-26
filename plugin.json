@@ -7,26 +7,26 @@
     "license": "proprietary",
     "link": "http://store.shopware.com",
     "author": "arvatis media GmbH",
-
-    "currentVersion": "1.0.0",
-
+    "currentVersion": "1.0.7",
     "changelog": {
         "de": {
-	    "1.0.2": "Shopware 4 Kompatibilität",
-	    "1.0.1": "Fehlerkorrekturen",
+            "1.0.7": "Template Blöcke hinzugefügt",
+            "1.0.2": "Shopware 4 Kompatibilität",
+            "1.0.1": "Fehlerkorrekturen",
             "1.0.0": "Erstveröffentlichung"
         },
         "en": {
-	    "1.0.2": "Shopware 4 combatibility",
-	    "1.0.1": "Bugfixes",
+            "1.0.7": "Added new template blocks",
+            "1.0.2": "Shopware 4 combatibility",
+            "1.0.1": "Bugfixes",
             "1.0.0": "First release"
         }
     },
-
     "compatibility": {
         "minimumVersion": "4.3.6",
         "maximumVersion": null,
         "blacklist": [
+
         ]
     }
 }
