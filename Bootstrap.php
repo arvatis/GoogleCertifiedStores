@@ -225,7 +225,8 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
 
         $config = $this->Config();
 
-        if (empty($config->get('TRUSTED_STORE_ID'))) {
+        $value = $config->get('TRUSTED_STORE_ID');
+        if (empty($value)) {
             return;
         }
 
