@@ -17,7 +17,7 @@
             {assign var="sAmountTax" value=$sAmountTax-$sAmountNumeric}
 
             <!-- start order and merchant information -->
-            <span id="gts-o-id">{$sOrderNumber|round}</span>
+            <span id="gts-o-id">{$sOrderNumber|escape}</span>
             <span id="gts-o-domain">{$ARV_GTS_MERCHANT_ORDER_DOMAIN|escape}</span>
             <span id="gts-o-email">{$sUserData.additional.user.email|escape}</span>
             <span id="gts-o-country">{$ARV_GTS_COUNTRY|escape}</span>

@@ -10,11 +10,12 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
      */
     public function getVersion()
     {
-        return '1.0.7';
+        return '1.0.8';
     }
 
     /**
      * Get (nice) name for plugin manager list
+     *
      * @return string
      */
     public function getLabel()
@@ -28,17 +29,17 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
      */
     public function getInfo()
     {
-        return array(
+        return [
             'version' => $this->getVersion(),
             'autor' => 'arvatis media GmbH',
             'label' => $this->getLabel(),
-            'source' => "Community",
+            'source' => 'Community',
             'description' => '',
             'license' => 'commercial',
             'copyright' => 'Copyright © 2015, arvatis media GmbH',
             'support' => '',
             'link' => 'http://www.arvatis.com/'
-        );
+        ];
     }
 
     /**
@@ -56,12 +57,12 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
 
     /**
      * @param string $version
-     * @return bool
+     * @return array
      */
     public function update($version)
     {
         // Remove update zip if it exists
-        $updateFile = dirname(__FILE__) . "/ArvGoogleCertifiedShops.zip";
+        $updateFile = __DIR__ . '/ArvGoogleCertifiedShops.zip';
         if (file_exists($updateFile)) {
             unlink($updateFile);
         }
@@ -70,13 +71,16 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
             try {
                 $this->createForm();
             } catch (Exception $e) {
-                return array(
+                return [
                     'success' => false,
                     'message' => $e->getMessage()
-                );
+                ];
             }
         }
-        return true;
+
+        return [
+            'success' => true,
+        ];
     }
 
 
