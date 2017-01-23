@@ -6,24 +6,6 @@
 class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopware_Components_Plugin_Bootstrap
 {
     /**
-     * @return string
-     */
-    public function getVersion()
-    {
-        return '1.0.8';
-    }
-
-    /**
-     * Get (nice) name for plugin manager list
-     *
-     * @return string
-     */
-    public function getLabel()
-    {
-        return 'Google Certified Shops';
-    }
-
-    /**
      * Get version tag of this plugin to display in manager
      * @return string
      */
@@ -43,6 +25,24 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
     }
 
     /**
+     * @return string
+     */
+    public function getVersion()
+    {
+        return '1.0.9';
+    }
+
+    /**
+     * Get (nice) name for plugin manager list
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return 'Google Certified Shops';
+    }
+
+    /**
      * Install plugin method
      *
      * @return bool
@@ -54,35 +54,6 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
 
         return true;
     }
-
-    /**
-     * @param string $version
-     * @return array
-     */
-    public function update($version)
-    {
-        // Remove update zip if it exists
-        $updateFile = __DIR__ . '/ArvGoogleCertifiedShops.zip';
-        if (file_exists($updateFile)) {
-            unlink($updateFile);
-        }
-
-        if (version_compare($version, '1.0.7', '<')) {
-            try {
-                $this->createForm();
-            } catch (Exception $e) {
-                return [
-                    'success' => false,
-                    'message' => $e->getMessage()
-                ];
-            }
-        }
-
-        return [
-            'success' => true,
-        ];
-    }
-
 
     /**
      * Register Events
@@ -207,6 +178,34 @@ class Shopware_Plugins_Frontend_ArvGoogleCertifiedShops_Bootstrap extends Shopwa
             )
         );
 
+    }
+
+    /**
+     * @param string $version
+     * @return array
+     */
+    public function update($version)
+    {
+        // Remove update zip if it exists
+        $updateFile = __DIR__ . '/ArvGoogleCertifiedShops.zip';
+        if (file_exists($updateFile)) {
+            unlink($updateFile);
+        }
+
+        if (version_compare($version, '1.0.7', '<')) {
+            try {
+                $this->createForm();
+            } catch (Exception $e) {
+                return [
+                    'success' => false,
+                    'message' => $e->getMessage()
+                ];
+            }
+        }
+
+        return [
+            'success' => true,
+        ];
     }
 
     /**

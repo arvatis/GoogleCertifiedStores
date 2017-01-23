@@ -1,26 +1,16 @@
 {
-    "name": "arvatis/googlecertifiedshops",
-    "authors": [
-        {
-            "name": "Jochen Manz",
-            "email": "manz@arvatis.com"
-        }
-    ],
-    "type": "shopware-frontend-plugin",
-    "require": {
-        "composer/installers": "~1.0"
-    },
-    "extra": {
-        "installer-name": "ArvGoogleCertifiedShops"
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "php bin/console sw:plugin:refresh",
-            "php bin/console sw:plugin:install ArvGoogleCertifiedShops",
-            "php bin/console sw:plugin:activate ArvGoogleCertifiedShops"
-        ],
-        "post-update-cmd": [
-            "php bin/console sw:plugin:update ArvGoogleCertifiedShops"
-        ]
+  "name": "arvatis/googlecertifiedshops",
+  "authors": [
+    {
+      "name": "Jochen Manz",
+      "email": "manz@arvatis.com"
     }
+  ],
+  "type": "shopware-frontend-plugin",
+  "require": {
+    "composer/installers": "~1.0"
+  },
+  "extra": {
+    "installer-name": "ArvGoogleCertifiedShops"
+  }
 }
