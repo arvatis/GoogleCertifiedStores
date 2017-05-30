@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../engine/Shopware/Components/Plugin/schema/plugin.xsd">
+    <label lang="de">Google Certified Shops</label>
+    <label lang="en">Google Certified Shops</label>
+    <version>2.0.0</version>
+    <copyright>Copyright © 2015, arvatis media GmbH</copyright>
+    <license>commercial</license>
+    <link>http://www.arvatis.com/</link>
+    <author>arvatis media GmbH</author>
+
+    <compatibility minVersion="5.2.0" />
+
+    <changelog version="1.0.0">
+        <changes lang="de">Erstveröffentlichung</changes>
+        <changes lang="en">First release</changes>
+    </changelog>
+    <changelog version="1.0.1">
+        <changes lang="de">Fehlerkorrekturen</changes>
+        <changes lang="en">Bugfixes</changes>
+    </changelog>
+    <changelog version="1.0.2">
+        <changes lang="de">Shopware 4 Kompatibilität</changes>
+        <changes lang="en">Shopware 4 combatibility</changes>
+    </changelog>
+    <changelog version="1.0.7">
+        <changes lang="de">Template Blöcke hinzugefügt</changes>
+        <changes lang="en">Added new template blocks</changes>
+    </changelog>
+    <changelog version="2.0.0">
+        <changes lang="de">Wiederveröffentlichung</changes>
+        <changes lang="en">Rerelease</changes>
+    </changelog>
+</plugin>

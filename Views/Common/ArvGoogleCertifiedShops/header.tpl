@@ -10,7 +10,6 @@
         {if $ARV_GTS_BADGE_POSITION == 'USER_DEFINED'}
             gts.push(["badge_container", "GTS_CONTAINER"]);
         {/if}
-
         {if !empty($sArticle) && !empty($sArticle['articleID'])}
             gts.push(["google_base_offer_id", "{$sArticle.articleID|escape:'javascript'}"]);
         {elseif !empty($sArticles)}
@@ -26,11 +25,9 @@
                 {/if}
             {/foreach}
         {/if}
-
         gts.push(["google_base_subaccount_id", "{$ARV_GTS_GOOGLE_SHOPPING_ACCOUNT_ID|escape:'javascript'}"]);
         gts.push(["google_base_country", "{$ARV_GTS_GOOGLE_SHOPPING_COUNTRY|escape:'javascript'}"]);
         gts.push(["google_base_language", "{$ARV_GTS_GOOGLE_GOOGLE_SHOPPING_LANGUAGE|escape:'javascript'}"]);
-
         (function () {
             var gts = document.createElement("script");
             gts.type = "text/javascript";
