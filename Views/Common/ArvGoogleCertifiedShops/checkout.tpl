@@ -1,5 +1,7 @@
 <!-- START Google Zertifizierte Haendler Order -->
 {block name='arv_google_certified_shops_checkout'}
+    {var_dump('asdasasd')}
+    {debug}
     {if $sBasket.content && $sOrderNumber}
         <div id="gts-order" style="display: none;" translate="no">
             {if $sAmountWithTax}

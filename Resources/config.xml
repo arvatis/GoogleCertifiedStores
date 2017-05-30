@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../engine/Shopware/Components/Plugin/schema/config.xsd">
+    <elements>
+        <element type="text" scope="shop">
+            <name>TRUSTED_STORE_ID</name>
+            <label lang="en">Google Trusted Stores ID</label>
+            <label lang="de">Google Zertifizierte Händler-ID</label>
+            <value>ID</value>
+        </element>
+        <element type="combo" scope="shop">
+            <name>BADGE_POSITION</name>
+            <label lang="en">Badge position</label>
+            <label lang="de">Gütesiegel Position</label>
+            <value>BOTTOM_RIGHT</value>
+            <description lang="en">The default value for this variable is BOTTOM_RIGHT. Change this value to BOTTOM_LEFT if you would like the badge to float in the bottom left corner instead. You may also set this value to USER_DEFINED to specify a non-floating location for the badge on a given web page.</description>
+            <description lang="de">Der Standardwert dieser Variablen lautet BOTTOM_RIGHT. Alternativ können Sie diesen Wert auf USER_DEFINED setzen, um dem Gütesiegel eine andere, feste Position in Relation zu den anderen Inhalten auf einer bestimmten Webseite zuzuweisen.</description>
+            <store>
+                <option>
+                    <value>BOTTOM_RIGHT</value>
+                    <label>BOTTOM_RIGHT</label>
+                </option>
+                <option>
+                    <value>BOTTOM_LEFT</value>
+                    <label>BOTTOM_LEFT</label>
+                </option>
+                <option>
+                    <value>USER_DEFINED</value>
+                    <label>USER_DEFINED</label>
+                </option>
+            </store>
+        </element>
+        <element scope="shop" type="number">
+            <name>ORDER_EST_SHIP_DATE</name>
+            <label lang="en">Estimated shipping date in Days</label>
+            <label lang="de">Voraussichtliches Versanddatum in Tagen</label>
+            <value>0</value>
+        </element>
+        <element type="number" scope="shop">
+            <name>ORDER_EST_DELIVERY_DATE</name>
+            <label lang="en">Estimated delivery date in Days</label>
+            <label lang="de">Voraussichtlicher Liefertermin in Tagen</label>
+            <value>0</value>
+        </element>
+        <element type="text" scope="shop">
+            <name>MERCHANT_ORDER_DOMAIN</name>
+            <label lang="en">Merchant Domain</label>
+            <label lang="de">Händler Domain</label>
+            <value>null</value>
+            <description lang="en">Domain name associated with the order, formatted as www.mystore.com. If checkout takes place on a domain different from where your product pages are hosted, you should use the domain that hosts the product pages. The intent is for Google to know the domain where the customer added the item(s) to their cart.</description>
+            <description lang="de">Dies ist der Domainname zu der Bestellung im Format www.ihremusterdomain.de. Wenn Produktseiten und Seiten zum Abschluss des Kaufvorgangs auf verschiedenen Domains gehostet sind, sollten Sie die Domain verwenden, auf der sich die Produktseiten befinden. Dadurch soll Google die Domain mitgeteilt werden, auf der der Kunde Artikel zu seinem Warenkorb hinzugefügt hat.</description>
+        </element>
+        <element scope="shop" type="text">
+            <name>GOOGLE_SHOPPING_ACCOUNT_ID</name>
+            <label lang="en">Google Shopping Account ID</label>
+            <label lang="de">Google Shopping-Kundennummer</label>
+            <value>null</value>
+            <description lang="en">Account ID from Google Merchant Center. This value should match the account ID you use to submit your product data feed to Google Shopping through Google Merchant center. If you have a MCA account, use the subaccount ID associated with that product feed.</description>
+            <description lang="de">Kundennummer im Google Merchant Center. Dieser Wert muss mit der Kundennummer übereinstimmen, die Sie zum Senden Ihres Produktdatenfeeds an Google Shopping über das Google Merchant Center verwenden. Wenn Sie ein MCA-Konto haben, verwenden Sie die Kundennummer des Unterkontos, das mit diesem Produktfeed verknüpft ist.</description>
+        </element>
+        <element scope="shop" type="text">
+            <name>GOOGLE_SHOPPING_COUNTRY</name>
+            <label lang="en">Google Shopping country</label>
+            <label lang="de">Google Shopping-Land</label>
+            <value>null</value>
+            <description lang="en">Account country from Google Shopping. This value should match the account country you use to submit your product data feed to Google Shopping. The value of the country parameter should be a two-letter ISO 3166 country code. For example, values could be “US”, “GB”, “AU”, “FR”, “DE”, “JP”.</description>
+            <description lang="de">Geben Sie dieses Feld nur an, wenn Sie Feeds an Google Shopping senden. Dies ist das Land des Kontos aus Google Shopping. Dieser Wert sollte mit dem Land des Kontos übereinstimmen, das Sie verwenden, um Ihren Produktdatenfeed an Google Shopping zu senden. Der Wert des Parameters für das Land sollte ein aus zwei Buchstaben bestehender ISO 3166-Ländercode sein.</description>
+        </element>
+        <element scope="shop" type="text">
+            <name>GOOGLE_SHOPPING_LANGUAGE</name>
+            <label lang="en">Google Shopping language</label>
+            <label lang="de">Google Shopping-Sprache</label>
+            <value>null</value>
+            <description lang="en">Account language from Google Shopping. This value should match the account language you use to submit your product data feed to Google Shopping. The value of the language parameter should be a two-letter ISO 639-1 language code. For example, values could be "en", "fr", "de", "ja".</description>
+            <description lang="de">Geben Sie dieses Feld nur an, wenn Sie Feeds an Google Shopping senden. Dies ist die Sprache des Kontos aus Google Shopping. Dieser Wert sollte mit der Sprache des Kontos übereinstimmen, das Sie verwenden, um Ihren Produktdatenfeed an Google Shopping zu senden. Der Wert des Parameters für die Sprache sollte ein aus zwei Buchstaben bestehender ISO 639-1-Sprachcode sein.</description>
+        </element>
+    </elements>
+</config>
