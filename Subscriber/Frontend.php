@@ -8,11 +8,11 @@ namespace ArvGoogleCertifiedShops\Subscriber;
  * was ich haben will in die getconfig reinsetzten und direkt den wert returnen
  */
 use Enlight\Event\SubscriberInterface;
-use \Exception;
+use Exception;
 use Shopware\Components\Plugin\CachedConfigReader;
 use Shopware\Components\Plugin\ConfigReader;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use \Zend_Date;
+use Zend_Date;
 
 class Frontend implements SubscriberInterface
 {
@@ -40,28 +40,16 @@ class Frontend implements SubscriberInterface
 
     public static function getSubscribedEvents()
     {
-        return array(
-            'Enlight_Controller_Action_PostDispatch_Frontend' => 'onPostDispatch'
-        );
-    }
-
-    /**
-     * @param $var string
-     * @return bool|string
-     */
-    private function getConfigVar($var)
-    {
-        $config = $this->configReader->getByPluginName('ArvGoogleRemarketing', $this->container->get('shop'));
-        if(!empty($config["$var"])){
-           return $config["$var"];
-        }
-        return false;
+        return [
+            'Enlight_Controller_Action_PostDispatch_Frontend' => 'onPostDispatch',
+        ];
     }
 
     /**
      * Event listener method
      *
      * @param \Enlight_Controller_ActionEventArgs $args
+     *
      * @throws \Zend_Date_Exception
      * @throws \Exception
      */
@@ -74,8 +62,7 @@ class Frontend implements SubscriberInterface
             return;
         }
 
-        $value = $this->getConfigVar('TRUSTED_STORE_ID');
-        if (empty($value)) {
+        if ($this->getConfigVar('TRUSTED_STORE_ID')) {
             return;
         }
 
@@ -113,5 +100,21 @@ class Frontend implements SubscriberInterface
         $view->assign('ARV_GTS_GOOGLE_SHOPPING_ACCOUNT_ID', $this->getConfigVar('GOOGLE_SHOPPING_ACCOUNT_ID'));
         $view->assign('ARV_GTS_GOOGLE_SHOPPING_COUNTRY', $this->getConfigVar('GOOGLE_SHOPPING_COUNTRY'));
         $view->assign('ARV_GTS_GOOGLE_GOOGLE_SHOPPING_LANGUAGE', $this->getConfigVar('GOOGLE_SHOPPING_LANGUAGE'));
+    }
+
+    /**
+     * @param string      $var
+     * @param bool|string $default
+     *
+     * @return bool|string
+     */
+    private function getConfigVar($var, $default = false)
+    {
+        $config = $this->configReader->getByPluginName('ArvGoogleRemarketing', $this->container->get('shop'));
+        if (empty($config[$var])) {
+            return $default;
+        }
+
+        return $config[$var];
     }
 }
