@@ -2,11 +2,6 @@
 
 namespace ArvGoogleCertifiedShops\Subscriber;
 
-/*
- * Cached_config_reader usen
- * configread mit return machen
- * was ich haben will in die getconfig reinsetzten und direkt den wert returnen
- */
 use Enlight\Event\SubscriberInterface;
 use Exception;
 use Shopware\Components\Plugin\CachedConfigReader;
