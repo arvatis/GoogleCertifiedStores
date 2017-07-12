@@ -2,6 +2,11 @@
 
 namespace ArvGoogleCertifiedShops\Subscriber;
 
+/*
+ * Cached_config_reader usen
+ * configread mit return machen
+ * was ich haben will in die getconfig reinsetzten und direkt den wert returnen
+ */
 use Enlight\Event\SubscriberInterface;
 use \Exception;
 use Shopware\Components\Plugin\CachedConfigReader;
@@ -11,11 +16,6 @@ use \Zend_Date;
 
 class Frontend implements SubscriberInterface
 {
-    /**
-     * @var array|mixed
-     */
-    private $config;
-
     /**
      * @var CachedConfigReader|ConfigReader
      */
@@ -45,9 +45,17 @@ class Frontend implements SubscriberInterface
         );
     }
 
-    private function getConfig()
+    /**
+     * @param $var string
+     * @return bool|string
+     */
+    private function getConfigVar($var)
     {
-        $this->config = $this->configReader->getByPluginName('ArvGoogleRemarketing', $this->container->get('shop'));
+        $config = $this->configReader->getByPluginName('ArvGoogleRemarketing', $this->container->get('shop'));
+        if(!empty($config["$var"])){
+           return $config["$var"];
+        }
+        return false;
     }
 
     /**
@@ -59,7 +67,6 @@ class Frontend implements SubscriberInterface
      */
     public function onPostDispatch(\Enlight_Controller_ActionEventArgs $args)
     {
-        $this->getConfig();
         $request = $args->getSubject()->Request();
         $view = $args->getSubject()->View();
 
@@ -67,7 +74,7 @@ class Frontend implements SubscriberInterface
             return;
         }
 
-        $value = $this->config['TRUSTED_STORE_ID'];
+        $value = $this->getConfigVar('TRUSTED_STORE_ID');
         if (empty($value)) {
             return;
         }
@@ -88,23 +95,23 @@ class Frontend implements SubscriberInterface
 
         try {
             $now = new Zend_Date();
-            $dateShipping = $now->addDay($this->config['ORDER_EST_SHIP_DATE'])->toString('YYYY-MM-dd');
+            $dateShipping = $now->addDay($this->getConfigVar('ORDER_EST_SHIP_DATE'))->toString('YYYY-MM-dd');
 
             $now = new Zend_Date();
-            $dateDelivery = $now->addDay($this->config['ORDER_EST_DELIVERY_DATE'])->toString('YYYY-MM-dd');
+            $dateDelivery = $now->addDay($this->getConfigVar('ORDER_EST_DELIVERY_DATE'))->toString('YYYY-MM-dd');
         } catch (Exception $e) {
             $dateShipping = $dateDelivery = new Zend_Date();
         }
-        $view->assign('ARV_GTS_TRUSTED_STORE_ID', $this->config['TRUSTED_STORE_ID']);
-        $view->assign('ARV_GTS_BADGE_POSITION', $this->config['BADGE_POSITION']);
+        $view->assign('ARV_GTS_TRUSTED_STORE_ID', $this->getConfigVar('TRUSTED_STORE_ID'));
+        $view->assign('ARV_GTS_BADGE_POSITION', $this->getConfigVar('BADGE_POSITION'));
         $view->assign('ARV_GTS_LOCALE', Shopware()->Locale()->toString());
         $view->assign('ARV_GTS_COUNTRY', Shopware()->Locale()->getRegion());
-        $view->assign('ARV_GTS_MERCHANT_ORDER_DOMAIN', $this->config['MERCHANT_ORDER_DOMAIN']);
+        $view->assign('ARV_GTS_MERCHANT_ORDER_DOMAIN', $this->getConfigVar('MERCHANT_ORDER_DOMAIN'));
         $view->assign('ARV_GTS_ORDER_EST_SHIP_DATE', $dateShipping);
         $view->assign('ARV_GTS_ORDER_EST_DELIVERY_DATE', $dateDelivery);
         $view->assign('ARV_GTS_BASKET_CURRENCY', Shopware()->Currency()->getShortName());
-        $view->assign('ARV_GTS_GOOGLE_SHOPPING_ACCOUNT_ID', $this->config['GOOGLE_SHOPPING_ACCOUNT_ID']);
-        $view->assign('ARV_GTS_GOOGLE_SHOPPING_COUNTRY', $this->config['GOOGLE_SHOPPING_COUNTRY']);
-        $view->assign('ARV_GTS_GOOGLE_GOOGLE_SHOPPING_LANGUAGE', $this->config['GOOGLE_SHOPPING_LANGUAGE']);
+        $view->assign('ARV_GTS_GOOGLE_SHOPPING_ACCOUNT_ID', $this->getConfigVar('GOOGLE_SHOPPING_ACCOUNT_ID'));
+        $view->assign('ARV_GTS_GOOGLE_SHOPPING_COUNTRY', $this->getConfigVar('GOOGLE_SHOPPING_COUNTRY'));
+        $view->assign('ARV_GTS_GOOGLE_GOOGLE_SHOPPING_LANGUAGE', $this->getConfigVar('GOOGLE_SHOPPING_LANGUAGE'));
     }
 }
