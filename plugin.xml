@@ -3,7 +3,7 @@
         xsi:noNamespaceSchemaLocation="../../../engine/Shopware/Components/Plugin/schema/plugin.xsd">
     <label lang="de">Google Certified Shops</label>
     <label lang="en">Google Certified Shops</label>
-    <version>2.0.0</version>
+    <version>2.1.0</version>
     <copyright>Copyright © 2015, arvatis media GmbH</copyright>
     <license>commercial</license>
     <link>http://www.arvatis.com/</link>
@@ -30,5 +30,9 @@
     <changelog version="2.0.0">
         <changes lang="de">Wiederveröffentlichung</changes>
         <changes lang="en">Rerelease</changes>
+    </changelog>
+    <changelog version="2.1.0">
+        <changes lang="de">Ladeverhalten der Config optimiert</changes>
+        <changes lang="en">Fixed Config loadingbehavior</changes>
     </changelog>
 </plugin>
